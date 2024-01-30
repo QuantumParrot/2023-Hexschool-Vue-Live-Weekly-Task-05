@@ -1,0 +1,43 @@
+{
+  "name": "2023-hexschool-vue-live-weekly-task-05",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:unit": "vitest",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "@vee-validate/i18n": "^4.12.4",
+    "@vee-validate/rules": "^4.12.4",
+    "axios": "^1.6.5",
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.3",
+    "dotenv": "^16.3.1",
+    "pinia": "^2.1.7",
+    "sweetalert2": "^11.10.4",
+    "vee-validate": "^4.12.4",
+    "vue": "^3.3.11",
+    "vue-loading-overlay": "^6.0",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.2",
+    "eslint": "^8.49.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-vue": "^9.20.1",
+    "gh-pages": "^6.1.1",
+    "sass": "^1.69.7",
+    "vite": "^5.0.10",
+    "vite-plugin-eslint": "^1.8.1"
+  }
+}

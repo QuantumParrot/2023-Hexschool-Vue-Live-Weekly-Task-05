@@ -37,7 +37,7 @@ export default {
 
         ...mapActions(orderStore, ['showForm']),
 
-        ...mapActions(cartStore, ['getCartData', 'changeItemQty', 'deleteCartItem']),
+        ...mapActions(cartStore, ['getCartData', 'changeItemQty', 'deleteCartItem', 'deleteAll']),
 
     },
 
@@ -56,7 +56,7 @@ export default {
     <table class="table align-middle" v-else>
         <thead>
             <tr>
-            <th width="10%" class="text-center">刪除</th>
+            <th width="10%">刪除</th>
             <th width="45%">商品</th>
             <th width="10%" class="text-end">單價</th>
             <th width="15%" class="text-end">數量</th>
@@ -65,7 +65,7 @@ export default {
         </thead>
         <tbody>
             <tr v-for="cart in cartList.carts" :key="cart.id">
-                <td class="text-center">
+                <td>
                 <button type="button" class="btn btn-outline-danger" @click="deleteCartItem(cart.id)">
                 刪除</button>
                 </td>
@@ -91,9 +91,10 @@ export default {
         <tfoot>
             <tr class="fw-bold">
                 <td colspan="5" class="py-3">
-                <div class="d-flex justify-content-end align-items-center gap-3">
-                總計：NT$ {{ cartList.total }} 元
-                <button type="button" class="btn btn-danger" @click="showForm">結帳</button>
+                <button type="button" class="btn btn-outline-danger" @click="deleteAll">清空購物車</button>
+                    <div class="float-end d-flex justify-content-end align-items-center gap-3">
+                    總計：NT$ {{ cartList.total }} 元
+                    <button type="button" class="btn btn-danger" @click="showForm">送出訂單</button>
                 </div>
                 </td>
             </tr>

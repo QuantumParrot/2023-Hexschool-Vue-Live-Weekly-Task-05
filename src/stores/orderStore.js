@@ -29,7 +29,7 @@ export default defineStore('orderStore', {
 
             const { getCartData } = cartStore();
 
-            const { toastMessage } = messageStore();
+            const { toastMessage, errorMessage } = messageStore();
 
             const data = {
                 "user": {
@@ -51,7 +51,7 @@ export default defineStore('orderStore', {
                 getCartData();
             })
             .catch((error) => {
-                console.log(error);
+                errorMessage(error);
                 this.removeLoader('submitOrder');
             })
 

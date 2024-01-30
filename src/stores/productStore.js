@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import { defineStore, mapActions } from 'pinia';
 
+import messageStore from './messageStore';
 import loaderStore from './loaderStore';
 
 const { VITE_APP_SITE, VITE_APP_PATH } = import.meta.env;
@@ -22,6 +23,8 @@ export default defineStore('productStore', {
 
       this.createLoader('getProduct');
 
+      const { errorMessage } = messageStore();
+
       axios.get(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/products`)
       .then((res) => {
 
@@ -31,7 +34,7 @@ export default defineStore('productStore', {
       })
       .catch((error) => { 
         
-      console.log(error);
+      errorMessage(error);
       this.removeLoader('getProduct');
       
       });

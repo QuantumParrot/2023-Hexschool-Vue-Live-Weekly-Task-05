@@ -33,6 +33,8 @@ export default defineStore('cartStore', {
 
       this.createLoader('getCartData');
 
+      const { errorMessage } = messageStore();
+
       axios.get(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/cart`)
       .then((res) => {
 
@@ -44,7 +46,7 @@ export default defineStore('cartStore', {
       })
       .catch((error) => { 
       
-        console.log(error);
+        errorMessage(error);
         this.removeLoader('getCartData');
 
       })
@@ -53,7 +55,7 @@ export default defineStore('cartStore', {
 
     addToCart(product_id, qty = 1) {
 
-      const { toastMessage } = messageStore();
+      const { toastMessage, errorMessage } = messageStore();
 
       this.createLoader('addToCart');
 
@@ -81,7 +83,7 @@ export default defineStore('cartStore', {
         })
         .catch((error) => { 
           
-          console.log(error);
+          errorMessage(error);
           this.removeLoader('addToCart');
         
         })
@@ -99,7 +101,7 @@ export default defineStore('cartStore', {
 
       this.createLoader('changeItemQty');
       
-      const { toastMessage } = messageStore();
+      const { toastMessage, errorMessage } = messageStore();
 
       qty = qty * 1;
 
@@ -121,7 +123,7 @@ export default defineStore('cartStore', {
       })
       .catch((error) => {
 
-        console.log(error);
+        errorMessage(error);
         this.removeLoader('changeItemQty');
       
       })
@@ -132,7 +134,7 @@ export default defineStore('cartStore', {
 
       this.createLoader('deleteCartItem');
 
-      const { toastMessage } = messageStore();
+      const { toastMessage, errorMessage } = messageStore();
 
       axios.delete(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/cart/${id}`)
       .then((res) => {
@@ -147,11 +149,34 @@ export default defineStore('cartStore', {
       })
       .catch((error) => { 
         
-        console.log(error);
+        errorMessage(error);
         this.removeLoader('deleteCartItem');
       
       })
     
+    },
+
+    deleteAll() {
+
+      this.createLoader('deletaAll');
+
+      const { toastMessage, errorMessage } = messageStore();
+
+      axios.delete(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/carts`)
+      .then((res) => {
+
+        this.removeLoader('deletaAll');
+        this.getCartData();
+        toastMessage('success', '已清空購物車');
+
+      })
+      .catch((error) => {
+
+        errorMessage(error);
+        this.removeLoader('deletaAll');
+
+      })
+
     },
 
   },

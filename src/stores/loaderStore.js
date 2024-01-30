@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-export default defineStore('loadingStore', {
+export default defineStore('loaderStore', {
 
     state: () => ({
 

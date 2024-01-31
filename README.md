@@ -57,7 +57,9 @@ import { configure } from 'vee-validate';
 import { setLocale, localize } from '@vee-validate/i18n';
 ```
 
-**步驟二**：引入翻譯資源 ( @vee-validate/i18n 套件內建 )
+**步驟二**：
+
+引入翻譯資源 ( JSON 檔案為 @vee-validate/i18n 套件內建 )
 
 ``` js
 import zh_TW from '@vee-validate/i18n/dist/locale/zh_TW.json';
@@ -94,7 +96,9 @@ resetForm 是 vee-validate 套件提供的表單清空方法，一般情況下�
 
 不過，如果將表單資料交給 pinia 管理的話，就必須改用以下方式：
 
-**步驟一**：在表單元件上用 v-slot 將 resetForm 方法取出 ( 和 errors 一樣用解構的方式取出來即可 )
+**步驟一**：
+
+在表單元件上用 v-slot 將 resetForm 方法取出 ( 和 errors 一樣用解構的方式取出來即可 )
 
 ``` vue
 <template>
@@ -122,14 +126,13 @@ actions: {
 
       .then((res) => {
 
-        // ... (略) ...
+      // ... (略) ...
 
-        // 取得 API 回傳資料之後，直接呼叫它，就能清空ㄌ !!
+      // 取得 API 回傳資料之後，直接呼叫它，就能清空ㄌ !!
 
-        resetForm();
+      resetForm();
 
-      })
-      .catch((error) => { console.log(error) })
+      }).catch((error) => { console.log(error) })
 
   }
 
@@ -154,4 +157,4 @@ actions: {
 
 卡斯伯老師撰寫的 vee-validate 教學文件：[Vue 3 VeeValidation 驗證套件](https://hackmd.io/FFv0a5cBToOATP7uI5COMQ)
 
-直播班同學 Leo 撰寫的教學文件：[VeeValidation 在 Vite Vue 中的運用實作](https://fast-rise-3b2.notion.site/VeeValiadation-Vite-Vue-1dca9d5349434b66b8bb3d7ee67e148b)
+2023 Vue 直播班同學 Leo 撰寫的教學文件：[VeeValidation 在 Vite Vue 中的運用實作](https://fast-rise-3b2.notion.site/VeeValiadation-Vite-Vue-1dca9d5349434b66b8bb3d7ee67e148b)

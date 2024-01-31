@@ -28,16 +28,15 @@ export default defineStore('productStore', {
       axios.get(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/products`)
       .then((res) => {
 
-      this.products = res.data.products;
-      this.removeLoader('getProduct');
+        this.products = res.data.products;
       
       })
       .catch((error) => { 
         
-      errorMessage(error);
-      this.removeLoader('getProduct');
+        errorMessage(error);
       
-      });
+      })
+      .finally(() => { this.removeLoader('getProduct'); })
     
     },
 

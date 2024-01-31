@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 import { defineStore, mapState, mapActions } from 'pinia';
 
@@ -39,17 +40,15 @@ export default defineStore('cartStore', {
       .then((res) => {
 
         // console.log(res);
-
         this.cartList = res.data.data;
-        this.removeLoader('getCartData');
       
       })
       .catch((error) => { 
-      
+        
         errorMessage(error);
-        this.removeLoader('getCartData');
-
+      
       })
+      .finally(() => { this.removeLoader('getCartData'); })
 
     },
 
@@ -57,13 +56,13 @@ export default defineStore('cartStore', {
 
       const { toastMessage, errorMessage } = messageStore();
 
-      this.createLoader('addToCart');
-
       const isExist = this.cartList.carts.find((item) => item.product.id === product_id);
 
       // console.log(isExist);
 
       if (!isExist) {
+
+        this.createLoader('addToCart');
 
         axios.post(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/cart`, {
           data: { 
@@ -76,7 +75,6 @@ export default defineStore('cartStore', {
           // console.log(res);
           const { data, message } = res.data;
 
-          this.removeLoader('addToCart');
           this.getCartData();
           toastMessage('success', message);
 
@@ -84,9 +82,9 @@ export default defineStore('cartStore', {
         .catch((error) => { 
           
           errorMessage(error);
-          this.removeLoader('addToCart');
-        
+          
         })
+        .finally(() => { this.removeLoader('addToCart'); })
 
       } else {
 
@@ -116,7 +114,6 @@ export default defineStore('cartStore', {
         // console.log(res);
         const { message } = res.data;
 
-        this.removeLoader('changeItemQty');
         this.getCartData();
         toastMessage('success', message);
       
@@ -124,9 +121,9 @@ export default defineStore('cartStore', {
       .catch((error) => {
 
         errorMessage(error);
-        this.removeLoader('changeItemQty');
       
       })
+      .finally(() => { this.removeLoader('changeItemQty'); })
 
     },
 
@@ -142,7 +139,6 @@ export default defineStore('cartStore', {
         // console.log(res);
         const { message } = res.data;
 
-        this.removeLoader('deleteCartItem');
         this.getCartData();
         toastMessage('success', message);
 
@@ -150,30 +146,47 @@ export default defineStore('cartStore', {
       .catch((error) => { 
         
         errorMessage(error);
-        this.removeLoader('deleteCartItem');
       
       })
+      .finally(() => { this.removeLoader('deleteCartItem'); })
     
     },
 
     deleteAll() {
 
-      this.createLoader('deletaAll');
+      Swal.fire({
 
-      const { toastMessage, errorMessage } = messageStore();
+        icon: 'warning',
+        title: '確定要清空所有商品嗎？',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        denyButtonColor: '#f8f9fa',
+        confirmButtonText: '確定', 
+        denyButtonText: '取消',
 
-      axios.delete(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/carts`)
-      .then((res) => {
+      }).then((result) => {
 
-        this.removeLoader('deletaAll');
-        this.getCartData();
-        toastMessage('success', '已清空購物車');
+        if (result.isConfirmed) {
 
-      })
-      .catch((error) => {
+          this.createLoader('deletaAll');
 
-        errorMessage(error);
-        this.removeLoader('deletaAll');
+          const { toastMessage, errorMessage } = messageStore();
+
+          axios.delete(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/carts`)
+          .then((res) => {
+
+            this.getCartData();
+            toastMessage('success', '已清空購物車');
+
+          })
+          .catch((error) => {
+
+            errorMessage(error);
+
+          })
+          .finally(() => { this.removeLoader('deletaAll'); })
+
+        }
 
       })
 

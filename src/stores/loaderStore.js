@@ -4,6 +4,10 @@ export default defineStore('loaderStore', {
 
     state: () => ({
 
+        // 練習看看網路上找到的解法：Handing Loading Flags in Pinia Stores - Brenton Klik
+        
+        // https://medium.com/@bklik/handing-loading-flags-in-pinia-stores-bfdcee5b9fb
+
         loadingQueue: []
     
     }),

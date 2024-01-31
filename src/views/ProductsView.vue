@@ -16,10 +16,11 @@ import loaderStore from '@/stores/loaderStore';
 // component
 
 import ProductModal from '@/components/ProductModal.vue';
+import Pagination from '@/components/Pagination.vue';
 
 export default {
 
-  components: { Loading, ProductModal, ProductModal },
+  components: { Loading, ProductModal, Pagination },
 
   data() {
 
@@ -48,11 +49,13 @@ export default {
       this.productDetail = product;
       this.$refs.productModal.showModal();
     
-    }
+    },
+
+    switchPage(num) { this.getProductData(num); }
 
   },
 
-  mounted() { this.getProductData() },
+  mounted() { this.getProductData(); },
 
 };
 
@@ -60,8 +63,10 @@ export default {
 
 <template>
 
+<Loading v-model:active="isLoading" :z-index="1000"></Loading>
+
 <div class="my-3">
-    <Loading v-model:active="isLoading"></Loading>
+    <Pagination @switch-page="switchPage"></Pagination>
     <div class="row row-cols-3 g-4">
         <div class="col" v-for="product in products" :key="product.id">
             <div class="card h-100">
@@ -99,7 +104,7 @@ export default {
             </div>
         </div>
     </div>
-    <ProductModal :product="productDetail" ref="productModal"></ProductModal>
+    <ProductModal ref="productModal" :product="productDetail"></ProductModal>
 </div>
 
 </template>

@@ -49,8 +49,9 @@ export default {
 
 <template>
 
+<Loading v-model:active="isLoading" :z-index="1000"></Loading>
+
 <div class="my-5">
-    <Loading v-model:active="isLoading"></Loading>
     <h3 class="mb-5">購物車</h3>
     <div class="alert bg-secondary text-white" v-if="!cartList.carts.length">購物車內沒有商品</div>
     <table class="table align-middle" v-else>

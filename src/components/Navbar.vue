@@ -1,6 +1,6 @@
 <script>
 
-import { mapState } from 'pinia';
+import { mapState, mapActions } from 'pinia';
 
 import cartStore from '@/stores/cartStore';
 
@@ -12,7 +12,15 @@ export default {
         
     },
 
-    // mounted() { console.log(this.cartList) }
+    methods: {
+
+        // 因為重新載入商品頁時，不會自動取得購物車資料，所以 Navbar 無法正確反映當前購物車的狀態
+
+        ...mapActions(cartStore, ['getCartData'])
+
+    },
+
+    mounted() { this.getCartData() }
 
 }
 

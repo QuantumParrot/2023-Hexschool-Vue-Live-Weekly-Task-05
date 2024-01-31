@@ -13,22 +13,29 @@ export default defineStore('productStore', {
 
     products: [],
 
+    pagination: {},
+
   }),
 
   actions: {
 
     ...mapActions(loaderStore, ['createLoader', 'removeLoader']),
 
-    getProductData() {
+    getProductData(page = 1) {
 
       this.createLoader('getProduct');
 
       const { errorMessage } = messageStore();
 
-      axios.get(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/products`)
+      // 練習看看這個 API ( 之前都是用取得全部商品那一個 )
+
+      axios.get(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/products?page=${page}`)
       .then((res) => {
 
-        this.products = res.data.products;
+        // console.log(res.data);
+
+        this.productsData = res.data.products;
+        this.pagination = res.data.pagination;
       
       })
       .catch((error) => { 

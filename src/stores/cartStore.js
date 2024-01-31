@@ -20,12 +20,6 @@ export default defineStore('cartStore', {
 
   }),
 
-  getters: {
-
-    ...mapState(loaderStore, ['isLoading']),
-
-  },
-
   actions: {
 
     ...mapActions(loaderStore, ['createLoader', 'removeLoader']),

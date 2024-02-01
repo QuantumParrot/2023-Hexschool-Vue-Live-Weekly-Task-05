@@ -32,9 +32,9 @@ export default defineStore('productStore', {
       axios.get(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/products?page=${page}`)
       .then((res) => {
 
-        // console.log(res.data);
+        console.log(res.data);
 
-        this.productsData = res.data.products;
+        this.products = res.data.products;
         this.pagination = res.data.pagination;
       
       })

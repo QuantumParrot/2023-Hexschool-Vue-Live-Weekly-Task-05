@@ -65,7 +65,7 @@ export default {
 
 <Loading v-model:active="isLoading" :z-index="1000"></Loading>
 
-<div class="my-3">
+<div class="py-5 my-5">
     <Pagination @switch-page="switchPage"></Pagination>
     <div class="row row-cols-3 g-4">
         <div class="col" v-for="product in products" :key="product.id">

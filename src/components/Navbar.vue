@@ -28,7 +28,7 @@ export default {
 
 <template>
 
-<nav class="navbar bg-warning-subtle p-4">
+<nav class="navbar bg-warning-subtle p-4 fixed-top">
     <div class="container-fluid">
         <span class="navbar-brand fw-bold mb-0">收藏家</span>
         <ul class="d-flex align-items-center gap-4 list-unstyled mb-0">

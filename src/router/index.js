@@ -14,7 +14,8 @@ const router = createRouter({
       name: 'cart',
       component: () => import('../views/CartsView.vue')
     }
-  ]
+  ],
+  linkActiveClass: 'active',
 
 })
 

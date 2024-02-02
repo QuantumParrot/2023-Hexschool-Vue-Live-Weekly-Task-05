@@ -20,7 +20,7 @@ import Pagination from '@/components/Pagination.vue';
 
 export default {
 
-  components: { Loading, ProductModal, Pagination },
+  components: { ProductModal, Pagination },
 
   data() {
 

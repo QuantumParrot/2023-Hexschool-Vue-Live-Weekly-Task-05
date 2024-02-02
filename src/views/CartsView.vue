@@ -1,10 +1,5 @@
 <script>
 
-// vue-loading-overlay
-
-import Loading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/css/index.css';
-
 // pinia
 
 import { mapState, mapActions } from 'pinia';
@@ -21,7 +16,7 @@ import OrderForm from '@/components/OrderForm.vue';
 
 export default {
 
-    components: { Loading, OrderForm },
+    components: { OrderForm },
 
     computed: {
 

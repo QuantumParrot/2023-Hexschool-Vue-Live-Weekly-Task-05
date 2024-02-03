@@ -61,7 +61,7 @@ export default {
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card p-5">
-            <VForm v-slot="{ errors, resetForm }" @submit="submit">
+            <VForm v-slot="{ errors }" @submit="submit">
                 <div class="mb-3">
                     <label for="name" class="form-label">
                     <span class="text-danger">*</span>

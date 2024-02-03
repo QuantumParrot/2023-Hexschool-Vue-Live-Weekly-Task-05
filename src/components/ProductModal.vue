@@ -48,6 +48,7 @@ export default {
                 </div>
                 <div>
                 <h3 class="mb-3">{{ product.title }}</h3>
+                <p class="text-muted fst-italic">{{ product.subtitle }}</p>
                 <p class="text-muted">{{ product.content }}</p>
                 <p>{{ product.description }}</p>
                 </div>

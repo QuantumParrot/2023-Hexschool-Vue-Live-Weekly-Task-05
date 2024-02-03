@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-import { defineStore, mapState, mapActions } from 'pinia';
+import { defineStore, mapActions } from 'pinia';
 
 import messageStore from './messageStore';
 import loaderStore from './loaderStore';
@@ -46,11 +46,11 @@ export default defineStore('cartStore', {
 
     },
 
-    addToCart(product_id, qty = 1) {
+    addToCart(productId, qty = 1) {
 
       const { toastMessage, errorMessage } = messageStore();
 
-      const isExist = this.cartList.carts.find((item) => item.product.id === product_id);
+      const isExist = this.cartList.carts.find((item) => item.product.id === productId);
 
       // console.log(isExist);
 
@@ -60,7 +60,7 @@ export default defineStore('cartStore', {
 
         axios.post(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/cart`, {
           data: { 
-            product_id,
+            product_id: productId,
             qty
           }
         })
@@ -89,7 +89,7 @@ export default defineStore('cartStore', {
 
     },
 
-    changeItemQty(product_id, qty) {
+    changeItemQty(productId, qty) {
 
       this.createLoader('changeItemQty');
       
@@ -97,9 +97,9 @@ export default defineStore('cartStore', {
 
       qty = qty * 1;
 
-      axios.put(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/cart/${product_id}`, {
+      axios.put(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/cart/${productId}`, {
         data: {
-          product_id,
+          product_id: productId,
           qty
         }
       })

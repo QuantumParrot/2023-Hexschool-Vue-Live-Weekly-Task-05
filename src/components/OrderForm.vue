@@ -1,5 +1,8 @@
 <script>
 
+import { mapActions } from 'pinia';
+import orderStore from '@/stores/orderStore';
+
 import { Form, Field, ErrorMessage, configure, defineRule } from 'vee-validate';
 import { setLocale, localize } from '@vee-validate/i18n';
 import { required, email } from '@vee-validate/rules';
@@ -17,10 +20,6 @@ configure({
 setLocale('zh_TW');
 
 //
-
-import { mapActions } from 'pinia';
-
-import orderStore from '@/stores/orderStore';
 
 export default {
 
@@ -45,7 +44,7 @@ export default {
         phone(value) {
 
             if (!/^09[\d]{8}$/.test(value)) { return '電話號碼格式不正確' }
-            else { return true }
+            return true;
 
         },
 

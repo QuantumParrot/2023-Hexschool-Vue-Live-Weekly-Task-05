@@ -4,15 +4,17 @@ import { createApp } from 'vue';
 
 import { createPinia } from 'pinia';
 
-import App from './App.vue';
-
-import router from './router';
-
 // vue-loading-overlay
 
 import Loading from 'vue-loading-overlay';
 
 import 'vue-loading-overlay/dist/css/index.css';
+
+//
+
+import App from './App.vue';
+
+import router from './router';
 
 //
 

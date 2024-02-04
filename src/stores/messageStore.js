@@ -27,7 +27,7 @@ export default defineStore('messageStore', {
 
             else if (error.response) {
 
-            this.toastAlert(error.response.data.message, icon || 'warning');
+            this.toastMessage(icon || 'warning', error.response.data.message);
             
             }
 

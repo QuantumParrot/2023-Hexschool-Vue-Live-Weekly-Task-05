@@ -99,7 +99,7 @@ resetForm 是 vee-validate 套件提供的表單清空方法，一般情況下�
 
 ``` vue
 <template>
-    <VForm v-slot="{ resetForm }">
+    <VForm v-slot="{ errors }">
         <button @submit="onSubmit">submit</button>
     </VForm>
 </template>

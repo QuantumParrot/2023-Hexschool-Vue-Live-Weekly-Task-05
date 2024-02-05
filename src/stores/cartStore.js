@@ -154,9 +154,8 @@ export default defineStore('cartStore', {
         title: '確定要清空所有商品嗎？',
         showCancelButton: true,
         confirmButtonColor: '#dc3545',
-        denyButtonColor: '#f8f9fa',
-        confirmButtonText: '確定', 
-        denyButtonText: '取消',
+        confirmButtonText: '確定',
+        cancelButtonText: '取消',
 
       }).then((result) => {
 

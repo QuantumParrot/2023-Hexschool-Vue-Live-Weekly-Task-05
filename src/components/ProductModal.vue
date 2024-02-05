@@ -50,7 +50,7 @@ export default {
                 <h3 class="mb-3">{{ product.title }}</h3>
                 <p class="text-muted fst-italic">{{ product.subtitle }}</p>
                 <p class="text-muted">{{ product.content }}</p>
-                <p>{{ product.description }}</p>
+                <p class="text-description">{{ product.description }}</p>
                 </div>
                 <div class="alert bg-warning-subtle mb-0">
                     <template v-if="product.origin_price !== product.price">

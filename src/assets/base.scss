@@ -12,6 +12,15 @@ textarea { resize: none; }
 
 img { max-width: 100%; }
 
+.text-description {
+
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 2;
+  white-space: pre-wrap;
+
+}
+
 .nav-link.active {
 
   color: #2B5F75;

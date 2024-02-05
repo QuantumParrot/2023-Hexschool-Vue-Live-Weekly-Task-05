@@ -83,13 +83,13 @@ export default defineStore('cartStore', {
       } else {
 
         const qty = isExist.qty += 1;
-        this.changeItemQty(isExist.id, qty);
+        this.changeItemQty(isExist, qty);
 
       }
 
     },
 
-    changeItemQty(productId, qty) {
+    changeItemQty(cart, qty) {
 
       this.createLoader('changeItemQty');
       
@@ -97,9 +97,9 @@ export default defineStore('cartStore', {
 
       qty = qty * 1;
 
-      axios.put(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/cart/${productId}`, {
+      axios.put(`${VITE_APP_SITE}/api/${VITE_APP_PATH}/cart/${cart.id}`, {
         data: {
-          product_id: productId,
+          product_id: cart.product.id,
           qty
         }
       })

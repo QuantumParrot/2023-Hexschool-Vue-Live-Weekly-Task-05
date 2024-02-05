@@ -75,7 +75,7 @@ export default {
                 <td class="ps-5">
                 <div class="input-group">
                     <select class="form-select"
-                            :value="cart.qty" @change="changeItemQty(cart.id, $event.target.value)">
+                            :value="cart.qty" @change="changeItemQty(cart, $event.target.value)">
                     <option v-for="i in 10*(Math.ceil((cart.qty+1)/10))" :key="i" :value="i">{{ i }}</option>
                     </select>
                     <span class="input-group-text">{{ cart.product.unit }}</span>

@@ -73,8 +73,7 @@ configure({
 
   generateMessage: localize({ zh_TW }),
 
-  // validateOnInput: true,
-  // 可加可不加，如果加了就是 input 式驗證 ( 立即驗證 )，不加就是 change 式驗證 ( 離開焦點之後才驗證 )
+  validateOnInput: true, // 可加可不加，如果加了就是 input 式驗證 ( 立即驗證 )，不加就是 change 式驗證 ( 離開焦點之後才驗證 )
 
 });
 ```
